@@ -1,0 +1,580 @@
+/* ==========================================================
+   Cấu trúc chung và vị trí toàn bộ trang web
+   ========================================================== */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background: #ffffff;
+    max-width: none;
+    margin: 0;
+    padding: 40px 40px 30px 40px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container.hidden {
+    display: none;
+}
+
+
+/* ==========================================================
+   Header và các phần tử liên quan
+   ========================================================== */
+.header {
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #4a6cff;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.subtitle-container {
+    height: 1.5rem;
+    overflow: hidden;
+    min-height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subtitle {
+    color: #696c71;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+
+/* ==========================================================
+   Nút Menu và trạng thái đăng nhập
+   ========================================================== */
+.menu-btn {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    background: #4a6cff;
+    color: #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.user-profile {
+    display: none;
+    font-size: 2.5rem;
+    position: absolute;
+    top: 50px;
+    right: 40px;
+    color: #4a6cff;
+    font-size: 50px;
+    cursor: pointer;
+    z-index: 95;
+    text-decoration: none;
+}
+
+/* Ẩn menu-btn khi side-menu đang mở */
+.container.menu-open .menu-btn {
+    display: none;
+}
+
+
+/* ==========================================================
+   Nội dung chính và các Section
+   ========================================================== */
+.main {
+    width: 90%;
+    margin: 0 auto;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section label {
+    margin-left: 1%;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+    font-weight: bold;
+}
+
+
+/* ==========================================================
+   Khu vực nhập liệu và hiển thị kết quả
+   ========================================================== */
+.input-area,
+.output-area {
+    background: #fff;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 24px;
+    padding: 18px;
+    min-height: 120px;
+    position: relative;
+    width: 100%;
+    height: 200px;
+    transition: width 0.3s ease;
+}
+
+.input-area textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    resize: none;
+    min-height: 120px;
+    background: transparent;
+    color: #444;
+    font-family: inherit;
+}
+
+.output-area {
+    min-height: 100px;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+
+/* ==========================================================
+   Các nút chức năng, Tệp và Icon
+   ========================================================== */
+.file-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.file-upload-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.file-note {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.file-btn {
+    background: #a8ffb0;
+    color: #1a4d1a;
+    border: none;
+    border-radius: 18px;
+    padding: 6px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.2s;
+}
+
+.file-btn:hover {
+    background: #7be87b;
+}
+
+.file-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    align-items: center;
+    gap: 8px;
+}
+
+.file {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    border-radius: 8px;
+    padding: 3px 10px;
+    font-size: 0.98rem;
+    gap: 4px;
+    border: 2px solid #ddd;
+}
+
+.file .fa-times {
+    margin-left: 4px;
+    cursor: pointer;
+    color: #aaa;
+    font-size: 0.95em;
+}
+
+.file .fa-file-pdf { color: #e74c3c; }
+.file .fa-file-word { color: #3a7bd5; }
+.file .fa-file-alt { color: #888; }
+
+.action-btns {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+}
+
+.send-btn,
+.mic-btn {
+    background: #4aafff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.send-btn:hover,
+.mic-btn:hover {
+    background: #3578e5;
+}
+
+
+/* ==========================================================
+   Menu bên, Overlay và Popup đăng nhập
+   ========================================================== */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 90;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease;
+}
+
+.container.menu-open .overlay {
+    visibility: visible;
+    opacity: 1;
+}
+
+.side-menu {
+    position: absolute;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 100;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.container.menu-open .side-menu {
+    left: 0;
+}
+
+.close-menu-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #888;
+}
+
+.close-menu-btn:hover {
+    color: #333;
+}
+
+.side-menu-header {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    margin-top: 5px;
+    gap: 15px;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4a6cff;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+    text-decoration: none;
+}
+
+.side-menu-header i {
+    font-size: 2.5rem;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.menu-list li {
+    margin-bottom: 10px;
+}
+
+.menu-list a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.menu-list a:hover {
+    background-color: #e0e6ff;
+    color: #4a6cff;
+}
+
+.menu-list a i {
+    font-size: 1.2rem;
+    width: 25px;
+}
+
+.logout-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    border-top: 1px solid #f0f0f0;
+    margin-top: auto;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.logout-link:hover {
+    background-color: #e0e6ff;
+    color: #4a6cff;
+}
+
+.logout-link i {
+    font-size: 1.2rem;
+    width: 25px;
+}
+
+.container.menu-open .main {
+    margin-left: 300px;
+    width: calc(100% - 300px - 80px);
+}
+
+.container.menu-open .header {
+    margin-left: 300px;
+}
+
+.login-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 101;
+}
+
+.login-popup.active {
+    display: flex;
+}
+
+.popup-content {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 500px;
+    height: 600px;
+    width: 90%;
+    border: 2px solid black;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.login-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #4a6cff;
+    margin-bottom: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.login-title .icon {
+    font-size: 2.2rem;
+    color: #4a6cff;
+}
+
+.close-login-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+}
+
+.login-desc {
+    font-size: 2rem;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: 2px solid black;
+    width: 100%;
+    background-color: #fff;
+    color: #000000;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.google-btn:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 1px 3px rgba(60,64,67,0.3);
+}
+
+.google-btn .fab {
+    background: conic-gradient(at 40% 48%,#ea4335 18%, #4285f4 18% 40%, #34a853 40% 65%, #fbbc05 65% 85%, #ea4335 85%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 3rem;
+}
+
+
+/* ==========================================================
+   Footer
+   ========================================================== */
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 1rem;
+    color: #888;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.footer a {
+    color: #888;
+    text-decoration: underline;
+    margin: 0 15px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================================
+   Responsive cho màn hình nhỏ
+   ========================================================== */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+    .title {
+        font-size: 2rem;
+    }
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    .login {
+        font-size: 20px;
+        top: 20px;
+        right: 20px;
+    }
+    .menu-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+    }
+    .input-area textarea {
+        min-height: 100px;
+    }
+    .send-btn, .mic-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    .side-menu {
+        width: 80%;
+        left: -80%;
+    }
+    .container.menu-open .side-menu {
+        left: 0;
+    }
+    .container.menu-open .main,
+    .container.menu-open .header {
+        margin-left: 0;
+        width: 100%;
+    }
+}

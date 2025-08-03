@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tóm tắt văn bản học thuật</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        
+        <a href="#" id="user-profile-link" class="user-profile" onclick="toggleMenu()">
+            <i class="fas fa-user-circle"></i>
+        </a>
+        <div class="header">
+            <div class="title">
+                <i class="fas fa-file-text"></i>
+                <span>Tóm tắt văn bản học thuật</span>
+            </div>
+            <div class="menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="subtitle-container"> <div class="subtitle">
+                    Công cụ hỗ trợ tóm tắt nhanh và chính xác các văn bản học thuật
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="main">
+                <div class="section">
+                    <label>Văn bản hay tệp cần tóm tắt (.txt, .docx, pdf)</label>
+                    <div class="input-area">
+                        <textarea id="main-textarea" placeholder="Nhập văn bản học thuật cần tóm tắt vào đây . . . "></textarea>
+                        <div class="file-row">
+                            <div class="file-upload-controls"> 
+                                <span class="file-note">Lưu ý dung lượng tệp phải nhỏ hơn hoặc bằng 10MB</span>
+                                <label for="file-input" class="file-btn">
+                                    <i class="fas fa-upload"></i> Chọn tệp
+                                </label>
+                                <input type="file" id="file-input" accept=".txt, .docx, .pdf" style="display: none;">
+                            </div>
+                            <div class="file-list" id="file-list"></div>
+                            <div class="action-btns">
+                                <button class="send-btn"><i class="fas fa-arrow-up"></i></button>
+                                <button class="mic-btn"><i class="fas fa-microphone"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <label>Nội dung được tóm tắt</label>
+                    <div class="output-area">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="overlay" onclick="toggleMenu()"></div>
+        
+        <div class="side-menu">
+            <button class="close-menu-btn" onclick="toggleMenu()"><i class="fas fa-times"></i></button>
+            <a href="#" id="user-profile-menu-link" class="side-menu-header" onclick="openLoginPopup(event)">
+                <span>Đăng nhập</span>
+            </a>
+            <ul class="menu-list">
+                <li><a href="#" onclick="clearChat()"><i class="fas fa-plus"></i> Đoạn chat mới</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> Lịch sử</a></li>
+            </ul>
+            <a href="#" onclick="logout()" class="logout-link"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+        </div>
+    </div>
+    
+    <div class="login-popup">
+        <div class="popup-content">
+            <div class="login-title">
+                <span class="fas fa-user-circle"></span>
+                Đăng nhập
+                <button class="close-login-btn" onclick="closeLoginPopup()">&times;</button>
+            </div>
+            <div class="login-desc">
+                Truy cập vào công cụ tóm tắt<br>văn bản học thuật
+            </div>
+            <button class="google-btn" onclick="loginWithGoogle()">
+                <i class="fab fa-google"></i> Đăng nhập với Google
+            </button>
+            <div class="footer">
+                <a href="#">Điều khoản sử dụng</a>
+                <span>|</span>
+                <a href="#">Chính sách riêng tư</a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
